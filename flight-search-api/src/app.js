@@ -2,7 +2,7 @@ import express from "express";
 import { ApolloServer } from "apollo-server-express";
 import { typeDefs } from "./schema/schema.js";
 import { sequelize } from "./config/db.js";
-import resolvers from "./resolvers/flightResolver.js";
+import resolvers from "./resolvers/index.js";
 
 const app = express();
 
