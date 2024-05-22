@@ -1,6 +1,7 @@
 import { Flights } from "../models/index.js";
 import { calculateCO2 } from "../utils/co2Calculator.js";
 import { getCache, setCache } from "../utils/cache.js";
+import logger from "../utils/logger.js";
 
 const allFlightsResolver = {
   Query: {
@@ -10,6 +11,7 @@ const allFlightsResolver = {
         const cachedFlights = await getCache(cacheKey);
 
         if (cachedFlights) {
+          logger.info("Returning cached all flights data");
           return cachedFlights;
         }
 
@@ -26,9 +28,10 @@ const allFlightsResolver = {
         }));
 
         await setCache(cacheKey, result);
+        logger.info("Returning NOT CACHED all flights data");
         return result;
       } catch (error) {
-        console.error(error);
+        logger.error("Error fetching all flights: %o", error);
         throw new Error("Error fetching flights");
       }
     },
