@@ -31,8 +31,6 @@ const searchFlightsResolver = {
           },
         });
 
-        if (!flights.length) throw new Error("No flights found.");
-
         const result = flights.map((flight) => ({
           flightNumber: flight.flightNumber,
           airline: flight.airline,
@@ -40,6 +38,8 @@ const searchFlightsResolver = {
           arrivalTime: flight.arrivalTime,
           price: flight.price,
           co2Emissions: calculateCO2(flight.distance),
+          departureCity: flight.departureCity,
+          destinationCity: flight.destinationCity,
         }));
 
         await setCache(cacheKey, result);

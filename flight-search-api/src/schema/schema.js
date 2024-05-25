@@ -8,6 +8,8 @@ export const typeDefs = gql`
     arrivalTime: String
     price: Float
     co2Emissions: Float
+    departureCity: String
+    destinationCity: String
   }
 
   type Query {
