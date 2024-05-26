@@ -31,6 +31,9 @@ const searchFlightsResolver = {
           },
         });
 
+        // Used to simualte Error Handling in React App
+        // if (!flights.length) throw new Error("No flights found.");
+
         const result = flights.map((flight) => ({
           flightNumber: flight.flightNumber,
           airline: flight.airline,

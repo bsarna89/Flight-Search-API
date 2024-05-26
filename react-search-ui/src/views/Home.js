@@ -1,14 +1,8 @@
 import { homeCopy } from "../copy/homeCopy";
-import { useState } from "react";
-import { useQuery } from "@apollo/client";
-import { GET_FLIGHTS } from "../api/allFlights";
-import { SEARCH_FLIGHT } from "../api/searchFlight";
 import CustomLoader from "../components/CustomLoader";
-import { reformatDate } from "../utils/dateFormater";
-import { findNextClose } from "../utils/findNextClose";
+import { useNavigate } from "react-router-dom";
 
 // MUI imports //
-import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
@@ -17,85 +11,31 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
+import useHomeContainer from "./home-container";
 
 function Home() {
   const { pageContent } = homeCopy;
-
-  const [departureCity, setDepartureCity] = useState("");
-  const [destinationCity, setDestinationCity] = useState("");
-  const [dateAndTime, setDateAndTime] = useState(null);
-  const [searchParams, setSearchParams] = useState({
-    departureCity: "",
-    destinationCity: "",
-    date: "",
-  });
-
   const {
-    loading: searchLoading,
-    error: searchError,
-    data: searchData,
-  } = useQuery(SEARCH_FLIGHT, {
-    variables: {
-      departureCity: searchParams.departureCity,
-      destinationCity: searchParams.destinationCity,
-      date: searchParams.date,
-    },
-    skip:
-      !searchParams.departureCity ||
-      !searchParams.destinationCity ||
-      !searchParams.date,
-  });
-  const {
-    loading: allLoading,
-    error: allError,
-    data: allData,
-  } = useQuery(GET_FLIGHTS);
-
-  const handleDepartureChange = (e) => {
-    e.preventDefault();
-    setDepartureCity(e.target.value);
-    setSearchParams({
-      ...searchParams,
-      departureCity: e.target.value.trim(),
-    });
-  };
-
-  const handleDestinationChange = (e) => {
-    e.preventDefault();
-    setDestinationCity(e.target.value);
-    setSearchParams({
-      ...searchParams,
-      destinationCity: e.target.value.trim(),
-    });
-  };
-
-  const handleDateChange = (date) => {
-    const reformatedDate = reformatDate(date["$d"]);
-
-    setDateAndTime(date);
-    setSearchParams({
-      ...searchParams,
-      date: reformatedDate,
-    });
-  };
-
-  function handleSearch(e) {
-    e.preventDefault();
-
-    setSearchParams({
-      ...searchParams,
-    });
-
-    if (searchData.searchFlights.length === 0)
-      findNextClose(
-        allData.allFlights,
-        searchParams.departureCity,
-        searchParams.destinationCity
-      );
-  }
+    departureCity,
+    destinationCity,
+    dateAndTime,
+    searchLoading,
+    allLoading,
+    searchError,
+    allError,
+    handleDepartureChange,
+    handleDestinationChange,
+    handleDateChange,
+    handleSearch,
+  } = useHomeContainer();
+  const navigate = useNavigate();
 
   if (allLoading || searchLoading) {
     return <CustomLoader />;
+  }
+
+  if (searchError || allError) {
+    navigate("/error");
   }
 
   return (

@@ -25,7 +25,7 @@ export default function NavBar() {
   const handleClose = useCallback((page = undefined) => {
     page ? navigate(page) : setAnchorEl(null);
     setAnchorEl(null);
-  }, []);
+  }, [navigate]);
 
   return (
     <Box sx={{ flexGrow: 1 }}>

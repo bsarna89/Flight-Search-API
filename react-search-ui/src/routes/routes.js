@@ -18,6 +18,11 @@ export function RouterElement() {
       name: "Flights Table",
       element: lazyLoadRoutes("FlightsTable"),
     },
+    {
+      path: "error",
+      name: "Error Page",
+      element: lazyLoadRoutes("Error"),
+    },
   ];
 
   return useRoutes(routes);
