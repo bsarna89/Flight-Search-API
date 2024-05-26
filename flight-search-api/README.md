@@ -9,6 +9,7 @@ A Node.js application to search for flights using Express, Apollo Server, Sequel
 - [Redis Setup](#redis-setup)
 - [Installation](#installation)
 - [Running the Application](#running-the-application)
+- [System Design Document](#system-design-document)
 - [Further Considerations](#further-considerations)
 
 ## Features
@@ -126,7 +127,31 @@ Use Postman or access the GraphQL playground at:
 ```bash
 http://localhost:4002/graphql
 ```
+## System Design Document
 
+### 1. Overall Architecture:
+
+The flight search API follows a typical three-tier architecture:
+
+1. **Presentation Tier**: This consists of the Apollo Server, which handles incoming GraphQL queries and mutations. It interfaces with clients and translates their requests into operations on the backend data.
+  
+2. **Logic Tier**: The logic tier includes the resolvers and utilities responsible for processing data and business logic. Resolvers interact with the data access layer (DAL) and other services to fulfill GraphQL operations. Utilities such as the CO2 calculator and caching mechanisms aid in processing and optimizing data.
+
+3. **Data Access Tier**: This tier encompasses the database, Redis cache, and associated modules. The database stores flight data, while Redis caches frequently accessed data to reduce latency.
+
+### 2. Components and Interactions:
+
+- **Apollo Server**: Receives GraphQL requests, routes them to appropriate resolvers, and returns responses to clients.
+- **Resolvers**: Process GraphQL queries and mutations by interacting with data models and utilities.
+- **Models**: Represent flight data structures and manage interactions with the database (via Sequelize).
+- **Utilities**: Provide additional functionality such as caching and CO2 emissions calculation.
+- **Database (PostgreSQL)**: Stores persistent flight data, including flight details and metadata.
+- **Redis Cache**: Stores cached flight data using key-value pairs.
+
+### 3. Data Storage Solutions and Schemas:
+
+- **PostgreSQL Database**: Stores flight data in a relational format. Schema includes tables for flights, with fields such as flight number, airline, departure city, destination city, departure time, arrival time, price, distance, and timestamps.
+- **Redis Cache**: Stores cached flight data using key-value pairs. Keys are generated based on search parameters, and values are JSON representations of flight data.
 
 ## Further Considerations
 
@@ -217,3 +242,5 @@ Flights.afterUpdate(async (flight, options) => {
   await invalidateCache(cacheKey);
 });
 ```
+### Documentation
+To make the API well-documented, tools like Swagger can help to create comprehensive API documentation.
