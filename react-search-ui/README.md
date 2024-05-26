@@ -1,27 +1,51 @@
-# Getting Started with Create React App
+# React Flights Search API
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ React application for the simple search form and results. This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-![Alt Text](src/assets/homePage.png)
+## Table of Contents
 
-## Available Scripts
+- [Installation](#installation)
+- [Running the Application](#running-the-application)
+- [System Design Document](#system-design-document)
+- [Further Considerations](#further-considerations)
+- [Learn More](#learn-more)
 
-In the project directory, you can run:
 
-### `npm start`
+## Installation
 
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/bsarna89/Flight-Search-API.git
+   cd react-search-ui
+   ```
+
+2. Go to /react-search-ui directory and install dependencies
+
+   ```bash
+   npm install
+   ```
+
+## Running the Application
+
+### Start the application:
+
+```bash
+npm start
+```
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
+```bash
+npm test
+```
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+
+```bash
+npm run build
+```
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -31,15 +55,62 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## System Design Document
+### Purpose
+The purpose of this document is to outline the design of a flight search application. This document will detail the system architecture, components, database schema, and GraphQL APIs to be used in the development of the application.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Scope
+This document covers the design of the flight search application, which includes:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- A main page for searching flights.
+- A functionality to find the first available flight when a searched flight is missed.
+- A separate page displaying a table of all available flights.
+
+
+### System Overview
+The flight search application is a web-based system that allows users to search for flights based on departure location, destination, and departure time. If the searched flight is missed, the system will provide the first available flight with the same destination and departure. The application also includes a page displaying a table of all available flights.
+
+### Main Page
+![Alt Text](src/assets/homePage.png)
+
+### Flight Display
+![Alt Text](src/assets/foundFlight.png)
+
+### Flights Table Page
+![Alt Text](src/assets/fligtsTablePage.png)
+
+
+## Further Considerations
+
+### Error Handling and Validation
+- Form Validation: Ensure that user inputs are validated before submission. For example, ensure that the departure and destination are not the same, and that the departure time is in the future.
+- Error Messages: Provide user-friendly error messages for common issues such as invalid input or network errors.
+
+### Responsiveness
+- Ensure that the application is responsive and works well on different screen sizes and devices, including desktops, tablets, and smartphones.
+
+### Accessibility
+- WCAG Compliance: Ensure that the application is accessible to users with disabilities by following WCAG (Web Content Accessibility Guidelines).
+- Keyboard Navigation: Provide keyboard navigation support for all interactive elements.
+
+### Continuous Integration/Continuous Deployment (CI/CD)
+- Automated Testing: Implement automated testing (unit, integration, and end-to-end tests) to ensure code quality and reliability.
+- Automated Deployment: Set up automated deployment pipelines to streamline the deployment process and reduce manual errors.
+
+### Monitoring and Analytics
+- Application Monitoring: Use monitoring tools such as New Relic, Datadog, or Prometheus to track application performance and identify issues in real-time.
+- Analytics: Implement analytics tools to track user behavior and gather insights into how the application is used, helping to inform future improvements.
+
+## Future Scalability
+
+### Microservices Architecture
+- Consider evolving the backend into a microservices architecture as the application grows, allowing different parts of the system to scale independently.
+
+### Cloud-Native Services
+- Leverage cloud-native services and serverless architectures to handle varying loads and reduce infrastructure management overhead.
+
 
 ## Learn More
 
@@ -47,26 +118,4 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
