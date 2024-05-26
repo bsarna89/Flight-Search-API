@@ -166,7 +166,6 @@ It's good practice to validate the environment variables to ensure all necessary
 #### Example:
 
 ```javascript
-// src/config/validateEnv.js
 import { cleanEnv, str, port, num } from 'envalid';
 
 const validateEnv = () => {
@@ -192,6 +191,9 @@ validateEnv();
 
 ### Error Handling Enhancements
 The current error handling middleware logs and returns a generic message. Can consider differentiating between different error types (e.g., validation errors, database errors) to provide more specific error messages and HTTP status codes.
+
+#### Example:
+
 ```javascript
 // src/middlewares/errorHandler.js
 const errorHandler = (err, req, res, next) => {
@@ -209,6 +211,9 @@ export default errorHandler;
 
 ### Security Enhancements
 Possible to use security-related middleware like helmet to set various HTTP headers for security.
+
+#### Example:
+
 ```javascript
 import helmet from 'helmet';
 app.use(helmet());
@@ -216,6 +221,9 @@ app.use(helmet());
 
 ### Rate Limiting
 To prevent abuse of the API, it's likely to implement rate limiting using middleware like express-rate-limit.
+
+#### Example:
+
 ```javascript
 import rateLimit from 'express-rate-limit';
 
@@ -231,6 +239,9 @@ app.use(limiter);
 
 ### Caching Strategy
 May to consider invalidating the cache appropriately when data changes. For example, if new flights are added or existing flights are updated, invalidate the relevant cache.
+
+#### Example:
+
 ```javascript
 const invalidateCache = async (cacheKey) => {
   await redisClient.del(cacheKey);

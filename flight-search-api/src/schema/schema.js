@@ -13,7 +13,7 @@ export const typeDefs = gql`
   }
 
   type Query {
-    allFlights: [Flight] # Define allFlights field to retrieve all flights
+    allFlights: [Flight]
     searchFlights(
       departureCity: String!
       destinationCity: String!

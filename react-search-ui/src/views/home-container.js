@@ -9,6 +9,10 @@ export default function useHomeContainer() {
   const [departureCity, setDepartureCity] = useState("");
   const [destinationCity, setDestinationCity] = useState("");
   const [dateAndTime, setDateAndTime] = useState(null);
+  const [displayCard, setDisplayCard] = useState(false);
+  const [cardProps, setCardProps] = useState({});
+  const [nextFlightClose, setNextFlightClose] = useState({});
+  const [noFound, setNoFound] = useState(false);
   const [searchParams, setSearchParams] = useState({
     departureCity: "",
     destinationCity: "",
@@ -30,6 +34,7 @@ export default function useHomeContainer() {
       !searchParams.destinationCity ||
       !searchParams.date,
   });
+
   const {
     loading: allLoading,
     error: allError,
@@ -66,21 +71,35 @@ export default function useHomeContainer() {
 
   function handleSearch(e) {
     e.preventDefault();
-
+    setDisplayCard(false);
+    setNoFound(false);
     setSearchParams({
       ...searchParams,
     });
 
-    if (searchData.searchFlights.length === 0) {
+    const isEmpty = searchData?.searchFlights.length === 0;
+
+    if (searchData && isEmpty) {
       const closeFlight = findNextClose(
         allData.allFlights,
         searchParams.departureCity,
         searchParams.destinationCity
       );
-      console.log(closeFlight);
+      setCardProps({});
+      setNextFlightClose(closeFlight);
+      closeFlight.length === 0 ? setNoFound(true) : setNoFound(false);
+    } else if (searchData && !isEmpty) {
+      const response = searchData.searchFlights[0];
+
+      setCardProps(response);
+      setNextFlightClose({});
+      setDisplayCard(true);
+      setNoFound(false);
+    } else {
+      setCardProps({});
+      setNextFlightClose({});
+      setNoFound(true);
     }
-    console.log(searchData, searchError);
-    console.log(allData);
   }
 
   return {
@@ -94,6 +113,10 @@ export default function useHomeContainer() {
     allLoading,
     allError,
     allData,
+    displayCard,
+    cardProps,
+    nextFlightClose,
+    noFound,
     handleDepartureChange,
     handleDestinationChange,
     handleDateChange,
