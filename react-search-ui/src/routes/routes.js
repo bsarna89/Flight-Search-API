@@ -9,11 +9,6 @@ export function RouterElement() {
       element: lazyLoadRoutes("Home"),
     },
     {
-      path: "about-me",
-      name: "About me",
-      element: lazyLoadRoutes("AboutMe"),
-    },
-    {
       path: "flights-table",
       name: "Flights Table",
       element: lazyLoadRoutes("FlightsTable"),

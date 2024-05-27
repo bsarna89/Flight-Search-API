@@ -9,9 +9,5 @@ export const navBarCopy = {
       dataRef: "flight-table",
       text: "FLIGHTS TABLE",
     },
-    aboutMe: {
-      dataRef: "about-me",
-      text: "ABOUT ME",
-    },
   },
 };

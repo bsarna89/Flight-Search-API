@@ -58,7 +58,6 @@ const searchFlightsResolver = {
           date,
           error
         );
-        console.error(error);
         throw new Error("Error fetching flights");
       }
     },

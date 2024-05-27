@@ -3,6 +3,7 @@ import CustomLoader from "../components/CustomLoader";
 import { useNavigate } from "react-router-dom";
 import useHomeContainer from "./home-container";
 import { formatDate } from "../utils/dateFormater";
+import FlightCard from "../components/FlightCard";
 
 // MUI imports //
 import TextField from "@mui/material/TextField";
@@ -13,7 +14,6 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
-import FlightCard from "../components/FlightCard";
 
 function Home() {
   const {

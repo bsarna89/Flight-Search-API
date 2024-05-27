@@ -28,6 +28,10 @@
 
 ## Running the Application
 
+### Run Backend API in background
+
+Instructions for starting the Flight Search API:   [flight-search-api](flight-search-api/README.md)
+
 ### Start the application:
 
 ```bash
@@ -40,7 +44,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 npm test
 ```
 Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information, curently in progress.
 
 
 ```bash
@@ -85,31 +89,31 @@ The flight search application is a web-based system that allows users to search 
 ## Further Considerations
 
 ### Error Handling and Validation
-- Form Validation: Ensure that user inputs are validated before submission. For example, ensure that the departure and destination are not the same, and that the departure time is in the future.
-- Error Messages: Provide user-friendly error messages for common issues such as invalid input or network errors.
+- Form Validation: It's needed to ensure that user inputs are validated before submission. For example, the departure and destination are not the same, and that the departure time is in the future.
+- Error Messages: Requires providing user-friendly error messages for common issues such as invalid input or network errors.
 
 ### Responsiveness
-- Ensure that the application is responsive and works well on different screen sizes and devices, including desktops, tablets, and smartphones.
+- It's needed to ensure that the application is responsive and works well on different screen sizes and devices, including desktops, tablets, and smartphones.
 
 ### Accessibility
-- WCAG Compliance: Ensure that the application is accessible to users with disabilities by following WCAG (Web Content Accessibility Guidelines).
-- Keyboard Navigation: Provide keyboard navigation support for all interactive elements.
+- WCAG Compliance: the application is accessible to users with disabilities by following WCAG (Web Content Accessibility Guidelines).
+- Keyboard Navigation: a keyboard navigation support for all interactive elements.
 
 ### Continuous Integration/Continuous Deployment (CI/CD)
-- Automated Testing: Implement automated testing (unit, integration, and end-to-end tests) to ensure code quality and reliability.
-- Automated Deployment: Set up automated deployment pipelines to streamline the deployment process and reduce manual errors.
+- Automated Testing: Requires implementing automated testing (unit, integration, and end-to-end tests) to ensure code quality and reliability.
+- Automated Deployment: Needs to set up automated deployment pipelines to streamline the deployment process and reduce manual errors.
 
 ### Monitoring and Analytics
-- Application Monitoring: Use monitoring tools such as New Relic, Datadog, or Prometheus to track application performance and identify issues in real-time.
-- Analytics: Implement analytics tools to track user behavior and gather insights into how the application is used, helping to inform future improvements.
+- Application Monitoring: Usage of monitoring tools such as New Relic, Datadog, or Prometheus to track application performance and identify issues in real-time.
+- Analytics: Needs to implement analytics tools to track user behavior and gather insights into how the application is used, helping to inform future improvements.
 
 ## Future Scalability
 
 ### Microservices Architecture
-- Consider evolving the backend into a microservices architecture as the application grows, allowing different parts of the system to scale independently.
+- Needs to consider evolving the backend into a microservices architecture as the application grows, allowing different parts of the system to scale independently.
 
 ### Cloud-Native Services
-- Leverage cloud-native services and serverless architectures to handle varying loads and reduce infrastructure management overhead.
+- Requires leveraging cloud-native services and serverless architectures to handle varying loads and reduce infrastructure management overhead.
 
 
 ## Learn More

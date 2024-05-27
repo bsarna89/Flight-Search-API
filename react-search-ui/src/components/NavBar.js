@@ -59,9 +59,6 @@ export default function NavBar() {
             <MenuItem onClick={() => handleClose("/flights-table")}>
               {menuItems.flightsTable.text}
             </MenuItem>
-            <MenuItem onClick={() => handleClose("/about-me")}>
-              {menuItems.aboutMe.text}
-            </MenuItem>
           </Menu>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             {header}

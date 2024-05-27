@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { tableCopy } from "../copy/flightsTableCopy";
 import { formatDate } from "../utils/dateFormater";
 import CustomLoader from "../components/CustomLoader";
+import useFligthsTableContainer from "./flights-table-container";
 
 // MUI imports //
 import { styled } from "@mui/material/styles";
@@ -14,7 +15,6 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Typography } from "@mui/material";
-import useFligthsTableContainer from "./flights-table-container";
 
 function FlightsTable() {
   const { loading, error, data } = useFligthsTableContainer();
